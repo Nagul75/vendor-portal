@@ -1,0 +1,17 @@
+<mat-toolbar class="app-header">
+  <div class="brand-group">
+    <a routerLink="/dashboard" class="brand">Vendor Portal</a>
+    <nav *ngIf="auth.isLoggedIn()" class="top-nav">
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/profile">Profile</a>
+      <a routerLink="/finance">Finance</a>
+    </nav>
+  </div>
+  <div class="header-actions" *ngIf="auth.isLoggedIn()">
+    <span class="vendor-id">Vendor: {{ auth.getVendorId() }}</span>
+    <button mat-flat-button type="button" (click)="logout()">Logout</button>
+  </div>
+</mat-toolbar>
+<main class="app-main">
+  <router-outlet></router-outlet>
+</main>

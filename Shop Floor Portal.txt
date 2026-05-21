@@ -1,0 +1,277 @@
+ODATA
+
+/sap/opu/odata/SAP/ZGW_SHOPFLOOR_PORTAL_902109_SRV/$metadata
+/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/LoginSet?$filter=Userid eq '1001' and Password eq 'PASS123'
+
+OUTPUT:
+<?xml version="1.0"?>
+
+-<feed xml:base="http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+
+<id>http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/LoginSet</id>
+
+<title type="text">LoginSet</title>
+
+<updated>2026-05-19T04:46:42Z</updated>
+
+
+-<author>
+
+<name/>
+
+</author>
+
+<link title="LoginSet" rel="self" href="LoginSet"/>
+
+
+-<entry>
+
+<id>http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/LoginSet('1001')</id>
+
+<title type="text">LoginSet('1001')</title>
+
+<updated>2026-05-19T04:46:42Z</updated>
+
+<category scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" term="ZGW_SF_PORTAL_902109_SRV.Login"/>
+
+<link title="Login" rel="self" href="LoginSet('1001')"/>
+
+
+-<content type="application/xml">
+
+
+-<m:properties xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+
+<d:Userid>1001</d:Userid>
+
+<d:Password/>
+
+<d:Status>SUCCESS</d:Status>
+
+<d:Message>Login Success</d:Message>
+
+</m:properties>
+
+</content>
+
+</entry>
+
+</feed>
+
+/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/PlannedSet
+
+RESPONSE:
+<?xml version="1.0"?>
+
+-<feed xml:base="http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+
+<id>http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/PlannedSet</id>
+
+<title type="text">PlannedSet</title>
+
+<updated>2026-05-19T04:47:20Z</updated>
+
+
+-<author>
+
+<name/>
+
+</author>
+
+<link title="PlannedSet" rel="self" href="PlannedSet"/>
+
+
+-<entry>
+
+<id>http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/PlannedSet('5339')</id>
+
+<title type="text">PlannedSet('5339')</title>
+
+<updated>2026-05-19T04:47:20Z</updated>
+
+<category scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" term="ZGW_SF_PORTAL_902109_SRV.Planned"/>
+
+<link title="Planned" rel="self" href="PlannedSet('5339')"/>
+
+
+-<content type="application/xml">
+
+
+-<m:properties xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+
+<d:PlannedOrder>5339</d:PlannedOrder>
+
+<d:Material>741</d:Material>
+
+<d:Quantity>2</d:Quantity>
+
+<d:StartDate>2026-03-02T00:00:00</d:StartDate>
+
+<d:EndDate>2026-03-02T00:00:00</d:EndDate>
+
+<d:MonthFilter>03</d:MonthFilter>
+
+<d:YearFilter>2026</d:YearFilter>
+
+<d:Unit>PC</d:Unit>
+
+</m:properties>
+
+</content>
+
+</entry>
+
+
+-<entry>
+
+<id>http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/PlannedSet('5337')</id>
+
+<title type="text">PlannedSet('5337')</title>
+
+<updated>2026-05-19T04:47:20Z</updated>
+
+<category scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" term="ZGW_SF_PORTAL_902109_SRV.Planned"/>
+
+<link title="Planned" rel="self" href="PlannedSet('5337')"/>
+
+
+-<content type="application/xml">
+
+
+-<m:properties xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+
+<d:PlannedOrder>5337</d:PlannedOrder>
+
+<d:Material>741</d:Material>
+
+<d:Quantity>3</d:Quantity>
+
+<d:StartDate>2026-04-01T00:00:00</d:StartDate>
+
+<d:EndDate>2026-04-01T00:00:00</d:EndDate>
+
+<d:MonthFilter>04</d:MonthFilter>
+
+<d:YearFilter>2026</d:YearFilter>
+
+<d:Unit>PC</d:Unit>
+
+</m:properties>
+
+</content>
+
+</entry>
+... and so on
+It's the same for the next two, just added filters.
+/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/PlannedSet?$filter=YearFilter eq '2026'
+/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/PlannedSet?$filter=MonthFilter eq '04' and YearFilter eq '2026'
+
+/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/ProductionSet
+
+RESPONSE:
+<?xml version="1.0"?>
+
+-<feed xml:base="http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+
+<id>http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/ProductionSet</id>
+
+<title type="text">ProductionSet</title>
+
+<updated>2026-05-19T04:48:42Z</updated>
+
+
+-<author>
+
+<name/>
+
+</author>
+
+<link title="ProductionSet" rel="self" href="ProductionSet"/>
+
+
+-<entry>
+
+<id>http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/ProductionSet('4000005')</id>
+
+<title type="text">ProductionSet('4000005')</title>
+
+<updated>2026-05-19T04:48:42Z</updated>
+
+<category scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" term="ZGW_SF_PORTAL_902109_SRV.Production"/>
+
+<link title="Production" rel="self" href="ProductionSet('4000005')"/>
+
+
+-<content type="application/xml">
+
+
+-<m:properties xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+
+<d:ProductionOrder>4000005</d:ProductionOrder>
+
+<d:Material/>
+
+<d:Quantity>1.000</d:Quantity>
+
+<d:Unit/>
+
+<d:StartDate>2025-06-10T00:00:00</d:StartDate>
+
+<d:EndDate>2025-06-10T00:00:00</d:EndDate>
+
+<d:MonthFilter>06</d:MonthFilter>
+
+<d:YearFilter>2025</d:YearFilter>
+
+</m:properties>
+
+</content>
+
+</entry>
+
+
+-<entry>
+
+<id>http://AZKTLDS5CP.kcloud.com:8000/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/ProductionSet('4000003')</id>
+
+<title type="text">ProductionSet('4000003')</title>
+
+<updated>2026-05-19T04:48:42Z</updated>
+
+<category scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme" term="ZGW_SF_PORTAL_902109_SRV.Production"/>
+
+<link title="Production" rel="self" href="ProductionSet('4000003')"/>
+
+
+-<content type="application/xml">
+
+
+-<m:properties xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+
+<d:ProductionOrder>4000003</d:ProductionOrder>
+
+<d:Material/>
+
+<d:Quantity>1.000</d:Quantity>
+
+<d:Unit/>
+
+<d:StartDate>2025-06-12T00:00:00</d:StartDate>
+
+<d:EndDate>2025-06-12T00:00:00</d:EndDate>
+
+<d:MonthFilter>06</d:MonthFilter>
+
+<d:YearFilter>2025</d:YearFilter>
+
+</m:properties>
+
+</content>
+
+</entry>
+
+Same for the next two, just added filters.
+
+/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/ProductionSet?$filter=YearFilter eq '2026'
+/sap/opu/odata/SAP/ZGW_SF_PORTAL_902109_SRV/ProductionSet?$filter=MonthFilter eq '04' and YearFilter eq '2026'
+

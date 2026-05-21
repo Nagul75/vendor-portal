@@ -1,0 +1,256 @@
+Vendor Portal
+
+SAP ODATA URLS:
+
+/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/$metadata
+/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/LoginSet(Lifnr='100000',Password='PASS123')
+/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/ProfileSet(Lifnr='100000')
+/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/POSet?$filter=Lifnr eq '100000'
+/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/GRSet?$filter=Lifnr eq '100000'
+/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/RFQSet?$filter=Lifnr eq '100000'
+/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/InvoiceSet?$filter=VendorId eq '100000'
+/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/PaymentAgingSet?$filter=VendorId eq '100000'
+/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/InvoicePdfSet(InvoiceDoc='5105600751')/$value
+
+Backend NodeJS URLS:
+
+1) Login
+
+POST http://localhost:3000/api/auth/login
+
+Body:
+{
+  "vendorId": "100000",
+  "password": "ADMIN123"
+}
+
+Response:
+{
+  "success": true,
+  "data": {
+    "vendorId": "100000"
+  }
+}
+
+After logging in, store the vendorId in the localstorage, redirect to dashboard and then attach vendorId in the urls of the rest of the API requests. 
+
+2) Profile
+
+GET http://localhost:3000/api/vendor/profile/:vendorId
+
+Response:
+{
+  "success": true,
+  "data": {
+    "__metadata": {
+      "id": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/ProfileSet('100000')",
+      "uri": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/ProfileSet('100000')",
+      "type": "ZGW_VENDOR_PORTAL_902109_SRV.Profile"
+    },
+    "Lifnr": "100000",
+    "Name1": "Vendor for Kaar",
+    "City": "Chennai",
+    "Country": "IN",
+    "Phone": "",
+    "Email": ""
+  }
+}
+
+3) Purchase Order
+
+GET http://localhost:3000/api/vendor/po/:vendorId
+
+Response:
+{
+  "success": true,
+  "data": [
+    {
+      "__metadata": {
+        "id": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/POSet('4500000003')",
+        "uri": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/POSet('4500000003')",
+        "type": "ZGW_VENDOR_PORTAL_902109_SRV.PO"
+      },
+      "Ebeln": "4500000003",
+      "Bsart": "NB",
+      "Bukrs": "0001",
+      "Bedat": "/Date(1747699200000)/",
+      "Lifnr": "100000",
+      "Bstyp": "F",
+      "Ekorg": "PUR1",
+      "Ekgrp": "PGN",
+      "Waers": "INR"
+    },
+...
+]
+}
+
+4) Request For Quotation
+
+GET http://localhost:3000/api/vendor/rfq/:vendorId
+
+Response:
+{
+  "success": true,
+  "data": [
+    {
+      "__metadata": {
+        "id": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/RFQSet('6000000000')",
+        "uri": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/RFQSet('6000000000')",
+        "type": "ZGW_VENDOR_PORTAL_902109_SRV.RFQ"
+      },
+      "Ebeln": "6000000000",
+      "Bsart": "AN",
+      "Bstyp": "A",
+      "Lifnr": "100000",
+      "Bedat": "/Date(1748822400000)/",
+      "Ekorg": "PUR1",
+      "Ekgrp": "PGN",
+      "Waers": "INR",
+      "Bukrs": "0001"
+    },
+    {
+      "__metadata": {
+        "id": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/RFQSet('6000000004')",
+        "uri": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/RFQSet('6000000004')",
+        "type": "ZGW_VENDOR_PORTAL_902109_SRV.RFQ"
+      },
+      "Ebeln": "6000000004",
+      "Bsart": "AN",
+      "Bstyp": "A",
+      "Lifnr": "100000",
+      "Bedat": "/Date(1763596800000)/",
+      "Ekorg": "APOP",
+      "Ekgrp": "AP1",
+      "Waers": "EUR",
+      "Bukrs": "0001"
+    }
+  ]
+}
+
+5) Goods Receipt
+
+GET http://localhost:3000/api/vendor/gr/:vendorId
+
+Response:
+{
+  "success": true,
+  "data": [
+    {
+      "__metadata": {
+        "id": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/GRSet(Mblnr='5000000003',Mjahr='2025',Ebelp='00010')",
+        "uri": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/GRSet(Mblnr='5000000003',Mjahr='2025',Ebelp='00010')",
+        "type": "ZGW_VENDOR_PORTAL_902109_SRV.GR"
+      },
+      "Mblnr": "5000000003",
+      "Mjahr": "2025",
+      "Budat": "/Date(1748822400000)/",
+      "Cpudt": "/Date(1748822400000)/",
+      "Ebeln": "4500000003",
+      "Ebelp": "00010",
+      "Lifnr": "100000",
+      "Matnr": "13",
+      "Maktx": "Wood",
+      "Bwart": "101"
+    },
+    ...
+  ]
+}
+
+6) Invoice
+
+GET http://localhost:3000/api/vendor/invoice/:vendorId
+
+Response:
+{
+  "success": true,
+  "data": [
+    {
+      "__metadata": {
+        "id": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/InvoiceSet(VendorId='100000',InvoiceDoc='5105600751',FiscalYear='2025',ItemNo='00010')",
+        "uri": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/InvoiceSet(VendorId='100000',InvoiceDoc='5105600751',FiscalYear='2025',ItemNo='00010')",
+        "type": "ZGW_VENDOR_PORTAL_902109_SRV.Invoice"
+      },
+      "VendorId": "100000",
+      "InvoiceDoc": "5105600751",
+      "FiscalYear": "2025",
+      "PoNo": "4500000000",
+      "ItemNo": "00010",
+      "Material": "13",
+      "Description": "Wood",
+      "InvoiceDate": "/Date(1748908800000)/",
+      "PostingDate": "/Date(1748908800000)/",
+      "InvoiceAmount": "500.00",
+      "Currency": "INR",
+      "PaymentTerms": "",
+      "Message": "Invoice fetched successfully"
+    },
+    ...
+  ]
+}
+
+7) Payment 
+
+GET http://localhost:3000/api/vendor/payment-aging/:vendorId
+
+Response:
+{
+  "success": true,
+  "data": [
+    {
+      "__metadata": {
+        "id": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/PaymentAgingSet(VendorId='100000',DocNo='5100000000',FiscalYear='2025')",
+        "uri": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/PaymentAgingSet(VendorId='100000',DocNo='5100000000',FiscalYear='2025')",
+        "type": "ZGW_VENDOR_PORTAL_902109_SRV.PaymentAging"
+      },
+      "VendorId": "100000",
+      "DocNo": "5100000000",
+      "FiscalYear": "2025",
+      "DocDate": "/Date(1748908800000)/",
+      "PostingDate": "/Date(1748908800000)/",
+      "DueDate": "/Date(1751241600000)/",
+      "Amount": "580.00",
+      "Currency": "INR",
+      "Status": "OPEN",
+      "AgingDays": 316,
+      "Message": "Payment aging fetched successfully"
+    },
+    ...
+  ]
+}
+
+8) Memo
+
+GET http://localhost:3000/api/vendor/memo/:vendorId
+
+{
+  "success": true,
+  "data": [
+    {
+      "__metadata": {
+        "id": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/MemoSet(VendorId='100000',DocNo='5105600751',FiscalYear='2025')",
+        "uri": "http://azktlds5cp.kcloud.com:8000/sap/opu/odata/sap/ZGW_VENDOR_PORTAL_902109_SRV/MemoSet(VendorId='100000',DocNo='5105600751',FiscalYear='2025')",
+        "type": "ZGW_VENDOR_PORTAL_902109_SRV.Memo"
+      },
+      "VendorId": "100000",
+      "DocNo": "5105600751",
+      "FiscalYear": "2025",
+      "DocType": "RM",
+      "DocDate": "/Date(1748908800000)/",
+      "PostingDate": "/Date(1748908800000)/",
+      "Amount": "580.00",
+      "Currency": "INR",
+      "MemoType": "Credit Memo",
+      "Message": "Memo fetched successfully"
+    },
+    ...
+  ]
+}
+
+9) PDF
+
+GET http://localhost:3000/api/vendor/invoice/pdf/:docId
+(docId like 5105600751, request from invoice page and will be downloadable, invoice response will have this doc id)
+
+Response:
+PDF
+
