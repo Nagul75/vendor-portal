@@ -30,3 +30,19 @@ input {
 .mat-mdc-button-base {
   border-radius: 8px !important;
 }
+
+.cdk-overlay-pane .mat-mdc-select-panel {
+  background: #fff;
+  border: 1px solid rgba(87, 60, 60, .12);
+  box-shadow: 0 18px 42px rgba(38, 25, 25, .18);
+}
+
+.cdk-overlay-pane .mat-mdc-option {
+  background: #fff;
+  color: #241f21;
+}
+
+.cdk-overlay-pane .mat-mdc-option:hover,
+.cdk-overlay-pane .mat-mdc-option.mdc-list-item--selected {
+  background: #f8f3ef;
+}

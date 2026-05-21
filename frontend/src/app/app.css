@@ -1,7 +1,7 @@
 :host {
   display: block;
   min-height: 100vh;
-  background: radial-gradient(circle at top left, rgba(145, 1, 2, .09), transparent 30rem), #f6f3ef;
+  background: #f7f5f2;
   color: #241f21;
   font-family: Inter, Roboto, system-ui, sans-serif;
 }
@@ -21,7 +21,7 @@ app-root {
   gap: 1rem;
   min-height: 72px;
   padding: 0 1.5rem;
-  background: rgba(255,255,255,.86);
+  background: #fff;
   border-bottom: 1px solid rgba(83, 54, 54, .12);
   backdrop-filter: blur(14px);
   box-shadow: 0 10px 30px rgba(60, 39, 39, .06);
@@ -42,24 +42,6 @@ app-root {
   text-decoration: none;
   white-space: nowrap;
 }
-.top-nav {
-  display: flex;
-  gap: .35rem;
-  flex-wrap: wrap;
-}
-.top-nav a {
-  color: #46383b;
-  text-decoration: none;
-  font-weight: 650;
-  font-size: .95rem;
-  padding: .55rem .8rem;
-  border-radius: 999px;
-  transition: background-color .2s ease, color .2s ease;
-}
-.top-nav a:hover {
-  background: rgba(145, 1, 2, .08);
-  color: #760407;
-}
 .header-actions {
   display: flex;
   align-items: center;
@@ -70,8 +52,47 @@ app-root {
   font-size: .9rem;
   white-space: nowrap;
 }
+.app-shell {
+  min-height: calc(100vh - 72px);
+  background: transparent;
+}
+.app-shell.auth-shell {
+  min-height: 100vh;
+}
+.app-sidebar {
+  width: 244px;
+  border-radius: 0%;
+  padding: .75rem;
+  background: #fff;
+  border-right: 1px solid rgba(83, 54, 54, .12);
+}
+.app-sidebar .mat-mdc-nav-list {
+  display: grid;
+  gap: .35rem;
+  padding: 0;
+}
+.app-sidebar a[mat-list-item] {
+  border-radius: 8px;
+  color: #473b3e;
+  transition: background-color .2s ease, color .2s ease;
+}
+.app-sidebar a[mat-list-item]:hover,
+.app-sidebar a[mat-list-item].active-nav-item {
+  background: rgba(145, 1, 2, .08);
+  color: #760407;
+}
+.app-sidebar mat-icon {
+  color: inherit;
+}
 .app-main {
   padding: 1.25rem;
+}
+.app-main.auth-main {
+  min-height: 100vh;
+  padding: 0;
+}
+.app-main.with-sidebar {
+  min-height: calc(100vh - 72px);
 }
 @media (max-width: 760px) {
   .app-header {
@@ -87,10 +108,18 @@ app-root {
   }
   .brand-group {
     align-items: flex-start;
-    flex-direction: column;
-    gap: .75rem;
+  }
+  .app-shell {
+    min-height: calc(100vh - 124px);
+  }
+  .app-sidebar {
+    width: 188px;
+    padding: .5rem;
   }
   .app-main {
     padding: .75rem;
+  }
+  .app-main.with-sidebar {
+    min-height: calc(100vh - 124px);
   }
 }

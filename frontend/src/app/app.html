@@ -1,17 +1,48 @@
-<mat-toolbar class="app-header">
+<mat-toolbar class="app-header" *ngIf="!isLoginRoute()">
   <div class="brand-group">
     <a routerLink="/dashboard" class="brand">Vendor Portal</a>
-    <nav *ngIf="auth.isLoggedIn()" class="top-nav">
-      <a routerLink="/dashboard">Dashboard</a>
-      <a routerLink="/profile">Profile</a>
-      <a routerLink="/finance">Finance</a>
-    </nav>
   </div>
   <div class="header-actions" *ngIf="auth.isLoggedIn()">
     <span class="vendor-id">Vendor: {{ auth.getVendorId() }}</span>
-    <button mat-flat-button type="button" (click)="logout()">Logout</button>
+    <button matButton type="button" (click)="logout()">Logout</button>
   </div>
 </mat-toolbar>
-<main class="app-main">
-  <router-outlet></router-outlet>
-</main>
+<mat-sidenav-container class="app-shell" [class.auth-shell]="isLoginRoute()" [hasBackdrop]="false">
+  <mat-sidenav
+    *ngIf="auth.isLoggedIn()"
+    class="app-sidebar"
+    mode="side"
+    opened
+    aria-label="Primary navigation"
+  >
+    <mat-nav-list>
+      <a
+        mat-list-item
+        routerLink="/dashboard"
+        routerLinkActive="active-nav-item"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <mat-icon matListItemIcon>dashboard</mat-icon>
+        <span matListItemTitle>Dashboard</span>
+      </a>
+      <a mat-list-item routerLink="/finance" routerLinkActive="active-nav-item">
+        <mat-icon matListItemIcon>account_balance_wallet</mat-icon>
+        <span matListItemTitle>Finance</span>
+      </a>
+      <a mat-list-item routerLink="/profile" routerLinkActive="active-nav-item">
+        <mat-icon matListItemIcon>person</mat-icon>
+        <span matListItemTitle>Profile</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <main
+      class="app-main"
+      [class.with-sidebar]="auth.isLoggedIn()"
+      [class.auth-main]="isLoginRoute()"
+    >
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
